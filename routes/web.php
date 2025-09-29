@@ -8,7 +8,7 @@ Route::get('/', function () {
 
 
 Route::get('/register', function () {
-    return "This is the Register Page.";
+    return view('register');
 })->name('register');
 
 Route::get('/about', function () {
