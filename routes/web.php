@@ -1,21 +1,29 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', function (Request $request) {
+    $username = session('username'); // pull username if available
+    return view('welcome', compact('username'));
+})->name('home');
 
+Route::get('/about', function () {
+    return view('about');
+})->name('about');
+
+Route::get('/contact', function () {
+    return view('contact');
+})->name('contact');
 
 Route::get('/register', function () {
     return view('register');
 })->name('register');
 
-Route::get('/about', function () {
-    return "About Page (we will build later)";
-});
+Route::post('/register', function (Request $request) {
+    // save username in session
+    session(['username' => $request->username]);
 
-Route::get('/contact', function () {
-    return "Contact Page (we will build later)";
-});
-
+    // redirect to home
+    return redirect()->route('home');
+})->name('register.submit');

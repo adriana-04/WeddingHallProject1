@@ -11,33 +11,34 @@
     <div class="card" style="width: 400px;">
         <div class="card-body">
             <h3 class="card-title text-center mb-4">Registration Account</h3>
+             
+            <form action="{{ route('register.submit') }}" method="POST">
+    @csrf
 
-            <form action="#" method="POST" onsubmit="showLoadingButton(this)">
-                @csrf
+    <!-- Username -->
+    <div class="form-floating mb-3">
+        <input type="text" name="username" class="form-control" id="username" placeholder="johndoe" required>
+        <label for="username">Username</label>
+    </div>
 
-                <!-- Username -->
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="username" placeholder="johndoe">
-                    <label for="username">Username</label>
-                </div>
+    <!-- Email -->
+    <div class="form-floating mb-3">
+        <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com" required>
+        <label for="floatingInput">Email address</label>
+    </div>
 
-                <!-- Email -->
-                <div class="form-floating mb-3">
-                    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                    <label for="floatingInput">Email address</label>
-                </div>
+    <!-- Password -->
+    <div class="form-floating mb-3">
+        <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password" required>
+        <label for="floatingPassword">Password</label>
+    </div>
 
-                <!-- Password -->
-                <div class="form-floating mb-3">
-                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                    <label for="floatingPassword">Password</label>
-                </div>
+    <!-- Submit -->
+    <button id="registerBtn" type="submit" class="btn btn-primary w-100">
+        Register
+    </button>
+</form>
 
-                <!-- Submit -->
-                <button id="registerBtn" type="submit" class="btn btn-primary w-100">
-                    Register
-                </button>
-            </form>
         </div>
     </div>
 
