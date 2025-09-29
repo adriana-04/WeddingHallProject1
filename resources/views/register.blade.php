@@ -12,10 +12,8 @@
         <div class="card-body">
             <h3 class="card-title text-center mb-4">Registration Account</h3>
 
-            <form action="#" method="POST">
+            <form action="#" method="POST" onsubmit="showLoadingButton(this)">
                 @csrf
-
-                
 
                 <!-- Username -->
                 <div class="form-floating mb-3">
@@ -35,13 +33,24 @@
                     <label for="floatingPassword">Password</label>
                 </div>
 
-
                 <!-- Submit -->
-                <button type="submit" class="btn btn-primary w-100">Register</button>
+                <button id="registerBtn" type="submit" class="btn btn-primary w-100">
+                    Register
+                </button>
             </form>
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function showLoadingButton(form) {
+            const btn = document.getElementById("registerBtn");
+            btn.disabled = true;
+            btn.innerHTML = `
+                <span class="spinner-grow spinner-grow-sm" aria-hidden="true"></span>
+                <span role="status">Loading...</span>
+            `;
+        }
+    </script>
+
 </body>
 </html>
