@@ -12,7 +12,7 @@
         <div class="card-body">
             <h3 class="card-title text-center mb-4">Registration Account</h3>
              
-            <form action="{{ route('register.submit') }}" method="POST">
+         <form action="{{ route('register.submit') }}" method="POST" onsubmit="showLoadingButton(this)">
     @csrf
 
     <!-- Username -->
