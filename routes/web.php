@@ -27,3 +27,9 @@ Route::post('/register', function (Request $request) {
     // redirect to home
     return redirect()->route('home');
 })->name('register.submit');
+
+Route::post('/logout', function () {
+    session()->forget('username'); // clear username from session
+    return redirect()->route('home'); // back to home
+})->name('logout');
+

@@ -20,16 +20,27 @@
     </div>
 
     <!-- Right: Auth simulation -->
-    @if (!empty($username))
+@if (!empty($username))
+    <div class="flex items-center space-x-3">
         <span class="font-semibold text-gray-800">
             {{ $username }}
         </span>
-    @else
-        <a href="{{ route('register') }}"
-           class="px-6 py-2 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 transition">
-            Register
-        </a>
-    @endif
+
+        <form method="POST" action="{{ route('logout') }}">
+            @csrf
+            <button type="submit"
+                class="px-4 py-2 bg-red-500 text-white text-sm font-medium rounded-lg shadow-md hover:bg-red-600 transition">
+                Logout
+            </button>
+        </form>
+    </div>
+@else
+    <a href="{{ route('register') }}"
+       class="px-6 py-2 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 transition">
+        Register
+    </a>
+@endif
+
 </nav>
 
 
@@ -39,6 +50,4 @@
     </div>
 
 </body>
-
-
 </html>
