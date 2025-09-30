@@ -27,6 +27,7 @@
     </div>
 @endif
 
+
     <!-- Right: Auth simulation -->
 @if (!empty($username))
     <div class="flex items-center space-x-3">
@@ -50,6 +51,30 @@
 @endif
 
 </nav>
+
+@if(session('role') === 'admin')
+    <div class="p-6">
+        <h2 class="text-xl font-bold mb-4">All Registered Halls</h2>
+        <table class="table-auto w-full border border-gray-300">
+            <thead class="bg-gray-200">
+                <tr>
+                    <th class="px-4 py-2 border">Hall Name</th>
+                    <th class="px-4 py-2 border">Location</th>
+                    <th class="px-4 py-2 border">Registered By</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(session('halls', []) as $hall)
+                    <tr>
+                        <td class="px-4 py-2 border">{{ $hall['hall_name'] }}</td>
+                        <td class="px-4 py-2 border">{{ $hall['location'] }}</td>
+                        <td class="px-4 py-2 border">{{ $hall['user'] }}</td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+@endif
 
 
     <!-- Content -->

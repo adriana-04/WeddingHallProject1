@@ -21,13 +21,17 @@ Route::get('/register', function () {
     return view('register');
 })->name('register');
 
-Route::post('/register', function (Request $request) {
-    // save username in session
-    session(['username' => $request->username]);
 
-    // redirect to home
+Route::post('/register', function (Request $request) {
+    // Save user info into session
+    session([
+        'username' => $request->username,
+        'role' => $request->username === 'admin' ? 'admin' : 'user'
+    ]);
+
     return redirect()->route('home');
 })->name('register.submit');
+
 
 Route::post('/logout', function () {
     session()->forget('username'); // clear username from session
@@ -39,7 +43,18 @@ Route::get('/hall-register', function () {
     return view('hall_register');
 })->name('hall.register');
 
+
+
 Route::post('/hall-register', function (Request $request) {
-    // Just simulate registration for now
+    $halls = session('halls', []);
+
+    $halls[] = [
+        'hall_name' => $request->hall_name,
+        'location' => $request->location,
+        'user' => session('username')
+    ];
+
+    session(['halls' => $halls]);
+
     return redirect()->route('home')->with('success', 'Registration hall completed.');
 })->name('hall.register.submit');
