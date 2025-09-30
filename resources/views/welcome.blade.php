@@ -13,11 +13,19 @@
     <h1 class="text-2xl font-bold text-gray-700">WeddingHall</h1>
 
     <!-- Center: Navigation Links -->
-    <div class="space-x-6">
-        <a href="{{ route('home') }}" class="text-gray-700 hover:text-blue-600 font-medium">Home</a>
-        <a href="{{ route('about') }}" class="text-gray-700 hover:text-blue-600 font-medium">About</a>
-        <a href="{{ route('contact') }}" class="text-gray-700 hover:text-blue-600 font-medium">Contact</a>
+    <div class="flex space-x-6">
+    <a href="{{ route('home') }}" class="text-gray-700 hover:text-blue-600">Home</a>
+    <a href="{{ route('about') }}" class="text-gray-700 hover:text-blue-600">About</a>
+    <a href="{{ route('contact') }}" class="text-gray-700 hover:text-blue-600">Contact</a>
+    <a href="{{ route('hall.register') }}" class="text-gray-700 hover:text-blue-600">Hall Registration</a>
+</div> 
+
+
+@if(session('success'))
+    <div class="bg-green-100 text-green-700 px-4 py-2 text-center">
+        {{ session('success') }}
     </div>
+@endif
 
     <!-- Right: Auth simulation -->
 @if (!empty($username))

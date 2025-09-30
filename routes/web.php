@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 
+
 Route::get('/', function (Request $request) {
     $username = session('username'); // pull username if available
     return view('welcome', compact('username'));
@@ -33,3 +34,12 @@ Route::post('/logout', function () {
     return redirect()->route('home'); // back to home
 })->name('logout');
 
+
+Route::get('/hall-register', function () {
+    return view('hall_register');
+})->name('hall.register');
+
+Route::post('/hall-register', function (Request $request) {
+    // Just simulate registration for now
+    return redirect()->route('home')->with('success', 'Registration hall completed.');
+})->name('hall.register.submit');
