@@ -36,8 +36,8 @@ Route::post('/register', function (Request $request) {
 
 
 Route::post('/logout', function () {
-    session()->forget('username'); // clear username from session
-    return redirect()->route('home'); // back to home
+    session()->flush();
+    return redirect()->route('home');
 })->name('logout');
 
 
