@@ -39,6 +39,8 @@ Route::post('/logout', function () {
 })->name('logout');
 
 
+
+
 Route::get('/hall-register', function () {
     return view('hall_register');
 })->name('hall.register');
