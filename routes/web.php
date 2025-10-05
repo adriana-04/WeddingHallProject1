@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\HallController;
 
 
 Route::get('/', function (Request $request) {
@@ -62,3 +64,9 @@ Route::post('/hall-register', function (Request $request) {
 })->name('hall.register.submit');
 
 //safe zone
+
+Route::get('/register', [RegisterController::class, 'show'])->name('register');
+Route::post('/register', [RegisterController::class, 'store'])->name('register.submit');
+
+Route::get('/hall-register', [HallController::class, 'create'])->name('hall.register');
+Route::post('/hall-register', [HallController::class, 'store'])->name('hall.register.submit');
