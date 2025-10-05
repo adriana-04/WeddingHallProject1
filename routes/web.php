@@ -60,3 +60,5 @@ Route::post('/hall-register', function (Request $request) {
 
     return redirect()->route('home')->with('success', 'Registration hall completed.');
 })->name('hall.register.submit');
+
+//safe zone
