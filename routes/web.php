@@ -6,10 +6,18 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\HallController;
 
 
-Route::get('/', function (Request $request) {
-    $username = session('username'); // pull username if available
-    return view('welcome', compact('username'));
+Route::get('/', function () {
+    $username = session('username');
+    $role = session('role');
+
+    $halls = [];
+    if ($role === 'admin') {
+        $halls = \App\Models\Hall::with('user')->get();
+    }
+
+    return view('welcome', compact('username', 'halls'));
 })->name('home');
+
 
 Route::get('/about', function () {
     return view('about');
