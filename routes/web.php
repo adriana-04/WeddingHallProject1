@@ -4,9 +4,11 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\HallController;
+use App\Http\Controllers\AuthController;
 
 
-Route::get('/', function () {
+
+/*Route::get('/', function () {
     $username = session('username');
     $role = session('role');
 
@@ -16,6 +18,12 @@ Route::get('/', function () {
     }
 
     return view('welcome', compact('username', 'halls'));
+})->name('home');*/
+
+Route::get('/', function () {
+    $username = session('username');
+    $role = session('role');
+    return view('welcome', compact('username', 'role'));
 })->name('home');
 
 
@@ -78,3 +86,7 @@ Route::post('/register', [RegisterController::class, 'store'])->name('register.s
 
 Route::get('/hall-register', [HallController::class, 'create'])->name('hall.register');
 Route::post('/hall-register', [HallController::class, 'store'])->name('hall.register.submit');
+
+// 
+Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
+Route::post('/login', [AuthController::class, 'login'])->name('login.submit');

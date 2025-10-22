@@ -37,6 +37,14 @@
     <button id="registerBtn" type="submit" class="btn btn-primary w-100">
         Register
     </button>
+    
+    <div class="mt-4 text-center">
+    <p class="text-gray-700">
+        Have an account?
+        <a href="{{ route('login') }}" class="text-blue-600 font-semibold hover:underline">Log in</a>
+    </p>
+</div>
+
 </form>
 
         </div>
